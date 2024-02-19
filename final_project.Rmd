@@ -1,0 +1,171 @@
+---
+title: 'Final Project: Opioid Epidemic'
+author: "Angela Ho"
+date: "2023-12-09"
+output: 
+  html_document:
+    code_folding: hide
+---
+This project researched the ongoing opioid crisis, and more specifically  in trends of deaths and death rates. To tackle this, I looked at trends within races, 10-year age groups, and across regions, focusing on data from 2018-2022. Big picture, I wanted to find what specific drug is causing the most issues. 
+
+```{r}
+library("dplyr")
+library("tidyverse")
+library("ggridges")
+library("corrplot")
+
+```
+
+
+Read in the file of mortality rates from 2018 until last week of Dec 09, 2023. 
+```{r}
+mortality_until_recent <- read_delim("Mortality_2018_Last_Week.txt")
+
+```
+
+
+
+Data was queried from the CDC Wonder database and queried by census region, year, Ten-Year age group, state, and ICD-10 codes. The data was then processed to remove data from the year 2023 (as the year was not over yet), and non-numeric estimates of crude mortality such as “unreliable” or “suppressed.” In the crude mortality column, the data was listed as a character variable, and after removing non-numeric estimates, the variable was then converted to numeric. Another data set known as “census” was downloaded from the CDC Wonderbase and queried by residence census region, residence census region code, residence state, deaths, population, and residence state code. From this dataset, the columns deaths, crude rate, and population were removed, and any remaining NA values in the census data set were omitted.
+
+```{r}
+
+mortality_until_recent <- mortality_until_recent %>%
+  select(-Year, -Notes) %>%
+  rename("State" = "Residence State") %>%
+  rename("Year" = "Year Code") %>%
+  filter(Year != 2023) 
+
+```
+
+```{r}
+mortality_until_recent <- mortality_until_recent %>% 
+  filter(grepl("^\\d+$", Deaths)) %>%
+  mutate(Deaths = as.numeric(Deaths)) 
+
+```
+
+```{r}
+mortality_until_recent <- mortality_until_recent %>% 
+  filter(!is.na(Deaths))
+
+```
+
+```{r}
+mortality_until_recent <- mortality_until_recent %>%
+  filter(!is.na(as.numeric(`Crude Rate`)))
+```
+
+```{r}
+mortality_until_recent$`Crude Rate` <- as.numeric(mortality_until_recent$`Crude Rate`)
+
+```
+
+```{r}
+mortality_until_recent$State=toupper(mortality_until_recent$State)
+
+```
+
+```{r}
+
+mortality_by_region <- read_delim("Census_info.txt")
+
+```
+
+```{r}
+mortality_by_region <- mortality_by_region %>% 
+  select(-Notes)
+
+mortality_by_region <- mortality_by_region %>%
+  rename("State"="Residence State")
+
+```
+
+```{r}
+
+mortality_by_region <- na.omit(mortality_by_region)
+
+mortality_by_region$`State`=toupper(mortality_by_region$`State`)
+
+mortality_by_region <- mortality_by_region %>%
+   select(-4, -5, -6, -7)
+```
+
+
+
+
+The first graph created was a bar graph showing the total mortality of each of the 50 states. I created it using ggplot's geom_bar to identify the mortality count of each state to show totals that don’t take into account the difference in population or size of each state and differentiate the opioid count. I used this to reflect the direct number of occurrences as a start to easily analyze the data in a simple way finding the absolute magnitude where the highest number of deaths was in New York and the lowest in South Dakota. I used a categorical color palette to showcase the difference of opioids to enhance readability while adding visualappeal. In this way, you can see that other synthetic narcotics have the largest bar in each state showing a much greater count, followed by other opioids and heroin being greater or less in different states but methadone with the lowest count amount in all states.
+
+```{r}
+ggplot(mortality_until_recent, aes(x = State, y = Deaths, fill = `Multiple Cause of death`)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Deaths by State and Opioid") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 4),
+        legend.position = "top", 
+        legend.title = element_blank()) 
+```
+
+
+
+
+Joining the two files.
+```{r}
+final_tbl <-left_join(mortality_until_recent, mortality_by_region,
+                     join_by("State"=="State"))
+
+```
+
+```{r}
+final_tbl <- final_tbl %>%
+  mutate(Region = recode(`Residence Census Region`,
+                                 "Census Region 4: West" = "West",
+                                 "Census Region 3: South" = "South",
+                                 "Census Region 2: Midwest" = "Midwest",
+                                 "Census Region 1: Northeast" = "Northeast"))
+
+```
+
+
+
+
+To continue on with analyzing the data, I then created a boxplot to showcase specifically what opioid had the most causation in each region. Other synthetic narcotics exhibited the largest range of crude rate in all regions compared to other opioids, with many outliers. The South had the most interquartile range, indicating the greatest variability. The interesting thing is even though the South has the most range, the Northeast has the higher median and the box is shifted more upwards suggesting that the region has a higher opioid-related value on average. This is very interesting to see considering the more densely populated states are more towards the Northeast like New York or even Massachusettscompared to North Carolina but this shows even with the less dense population it has more variability in their opioid mortalities.
+
+```{r}
+
+
+ggplot(final_tbl, aes(x = `Multiple Cause of death`, y = `Crude Rate`, fill = Region)) +
+  geom_boxplot(alpha = 0.8) +
+  scale_fill_brewer(palette="BuPu") +
+  labs(title = "Box Plot of Crude Rate Causation",
+       x = "Cause of Death",
+       y = "Crude Rate",
+       fill = "Region") 
+
+```
+
+
+
+
+
+After seeing both the bar graph and box plot, you can see that other synthetic narcotics have the most effect in all states. Based on this, I decided to create a line plot of all regions based on crude rate but only on other synthetic narcotics. Again you can see that the South has the most variability with the spread of crude rate most in 2020 to 2022. Overall in each region, as the years go on the crude rate trend increases with the West and Northeast peaking in 2022, and the South and Midwest peaking in 2021. The West seems to be the region that has the most pronounced increase starting very low in 2018 and increasing its spread to almost a high of 40 in 2022. The region that seems to have the least amount of change is the Midwest where although itis increasing, not by much. The Midwest had the least amount of change, suggesting a more stable situation.
+
+```{r}
+
+other_synthetic_data <- final_tbl[final_tbl$`Multiple Cause of death` == "Other synthetic narcotics", ]
+
+
+ggplot(other_synthetic_data, aes(x = Year, y = `Crude Rate`, color=Region)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~Region) + 
+  labs(title = "Crude Rate by Region and Other Synthetic Narcotics",
+       x = "Years",
+       y = "Crude Rate") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 5),
+        legend.position = "none",
+        legend.title = element_blank())
+```
+
+
+
+ In conclusion, the extensive array of visualizations created in this analysis shows the patterns within the opioid crisis from 2018 to 2022, shedding light on variations across regions and emphasizing the impact of other synthetic narcotics. While the South emerges as the epicenter of heightened influence, the visual shows each region was strongly affected by the drug. The comprehensive analysis proves the need to consider both absolute counts and standardized measures, like crude rates, in assessing the true severity of the crisis. Beyond the overall portrayed in the initial bar graph, the visuals—ranging from ridgeline plots to boxplots and line plots—offer a more intricate understanding. These visualizations serve as compelling instruments urging policymakers and healthcare professionals to adopt comprehensive strategies to acknowledge the nature of the opioid crisis.
+

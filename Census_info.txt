@@ -1,0 +1,91 @@
+"Notes"	"Residence Census Region"	"Residence Census Region Code"	"Residence State"	"Residence State Code"	Deaths	Population	Crude Rate
+	"Census Region 1: Northeast"	"CENS-R1"	"Connecticut"	"09"	195873	21511749	910.5
+	"Census Region 1: Northeast"	"CENS-R1"	"Maine"	"23"	93681	8149498	1149.5
+	"Census Region 1: Northeast"	"CENS-R1"	"Massachusetts"	"25"	361741	41642395	868.7
+	"Census Region 1: Northeast"	"CENS-R1"	"New Hampshire"	"33"	79473	8249420	963.4
+	"Census Region 1: Northeast"	"CENS-R1"	"Rhode Island"	"44"	62481	6460631	967.1
+	"Census Region 1: Northeast"	"CENS-R1"	"Vermont"	"50"	37805	3810345	992.2
+	"Census Region 1: Northeast"	"CENS-R1"	"New Jersey"	"34"	472885	54474471	868.1
+	"Census Region 1: Northeast"	"CENS-R1"	"New York"	"36"	1003343	117840285	851.4
+	"Census Region 1: Northeast"	"CENS-R1"	"Pennsylvania"	"42"	837772	77284471	1084.0
+"Total"	"Census Region 1: Northeast"	"CENS-R1"			3145054	339423265	926.6
+	"Census Region 2: Midwest"	"CENS-R2"	"Illinois"	"17"	690149	76014838	907.9
+	"Census Region 2: Midwest"	"CENS-R2"	"Indiana"	"18"	418916	40597005	1031.9
+	"Census Region 2: Midwest"	"CENS-R2"	"Michigan"	"26"	626704	60101760	1042.7
+	"Census Region 2: Midwest"	"CENS-R2"	"Ohio"	"39"	779190	70411810	1106.6
+	"Census Region 2: Midwest"	"CENS-R2"	"Wisconsin"	"55"	338160	35156381	961.9
+	"Census Region 2: Midwest"	"CENS-R2"	"Iowa"	"19"	191140	19054013	1003.1
+	"Census Region 2: Midwest"	"CENS-R2"	"Kansas"	"20"	174405	17542370	994.2
+	"Census Region 2: Midwest"	"CENS-R2"	"Minnesota"	"27"	284602	34030323	836.3
+	"Census Region 2: Midwest"	"CENS-R2"	"Missouri"	"29"	397475	36919989	1076.6
+	"Census Region 2: Midwest"	"CENS-R2"	"Nebraska"	"31"	105527	11692304	902.5
+	"Census Region 2: Midwest"	"CENS-R2"	"North Dakota"	"38"	40992	4612292	888.8
+	"Census Region 2: Midwest"	"CENS-R2"	"South Dakota"	"46"	50974	5345739	953.5
+"Total"	"Census Region 2: Midwest"	"CENS-R2"			4098234	411478824	996.0
+	"Census Region 3: South"	"CENS-R3"	"Delaware"	"10"	60906	5937896	1025.7
+	"Census Region 3: South"	"CENS-R3"	"District of Columbia"	"11"	31163	4131170	754.3
+	"Census Region 3: South"	"CENS-R3"	"Florida"	"12"	1338708	129853758	1030.9
+	"Census Region 3: South"	"CENS-R3"	"Georgia"	"13"	563620	64245613	877.3
+	"Census Region 3: South"	"CENS-R3"	"Maryland"	"24"	318669	36639587	869.7
+	"Census Region 3: South"	"CENS-R3"	"North Carolina"	"37"	615900	63126013	975.7
+	"Census Region 3: South"	"CENS-R3"	"South Carolina"	"45"	335996	31022996	1083.1
+	"Census Region 3: South"	"CENS-R3"	"Virginia"	"51"	451711	51570589	875.9
+	"Census Region 3: South"	"CENS-R3"	"West Virginia"	"54"	149785	10731643	1395.7
+	"Census Region 3: South"	"CENS-R3"	"Alabama"	"01"	350751	29832219	1175.7
+	"Census Region 3: South"	"CENS-R3"	"Kentucky"	"21"	312165	26941508	1158.7
+	"Census Region 3: South"	"CENS-R3"	"Mississippi"	"28"	212169	17779360	1193.3
+	"Census Region 3: South"	"CENS-R3"	"Tennessee"	"47"	466816	41411672	1127.3
+	"Census Region 3: South"	"CENS-R3"	"Arkansas"	"05"	209911	18139824	1157.2
+	"Census Region 3: South"	"CENS-R3"	"Louisiana"	"22"	296485	27826231	1065.5
+	"Census Region 3: South"	"CENS-R3"	"Oklahoma"	"40"	263643	23840750	1105.9
+	"Census Region 3: South"	"CENS-R3"	"Texas"	"48"	1347249	175642308	767.0
+"Total"	"Census Region 3: South"	"CENS-R3"			7325647	758673137	965.6
+	"Census Region 4: West"	"CENS-R4"	"Arizona"	"04"	406846	43700712	931.0
+	"Census Region 4: West"	"CENS-R4"	"Colorado"	"08"	255838	34698226	737.3
+	"Census Region 4: West"	"CENS-R4"	"Idaho"	"16"	93834	11070955	847.6
+	"Census Region 4: West"	"CENS-R4"	"Montana"	"30"	65796	6524473	1008.4
+	"Census Region 4: West"	"CENS-R4"	"Nevada"	"32"	164650	18684780	881.2
+	"Census Region 4: West"	"CENS-R4"	"New Mexico"	"35"	128711	12646207	1017.8
+	"Census Region 4: West"	"CENS-R4"	"Utah"	"49"	119308	19630867	607.8
+	"Census Region 4: West"	"CENS-R4"	"Wyoming"	"56"	33141	3475233	953.6
+	"Census Region 4: West"	"CENS-R4"	"Alaska"	"02"	30258	4398160	688.0
+	"Census Region 4: West"	"CENS-R4"	"California"	"06"	1740748	236150854	737.1
+	"Census Region 4: West"	"CENS-R4"	"Hawaii"	"15"	71249	8568028	831.6
+	"Census Region 4: West"	"CENS-R4"	"Oregon"	"41"	236984	25388422	933.4
+	"Census Region 4: West"	"CENS-R4"	"Washington"	"53"	369063	46060172	801.3
+"Total"	"Census Region 4: West"	"CENS-R4"			3716426	470997089	789.1
+"Total"					18285361	1980572315	923.2
+"---"
+"Dataset: Provisional Mortality Statistics, 2018 through Last Week"
+"Query Parameters:"
+"Group By: Residence Census Region; Residence State"
+"Show Totals: True"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd-provisional.html for more information."
+"---"
+"Query Date: Nov 16, 2023 11:37:15 AM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Provisional Mortality on CDC WONDER Online Database. Data are from the final Multiple Cause of Death Files, 2018-2021,"
+"and from provisional data for years 2022-2023, as compiled from data provided by the 57 vital statistics jurisdictions through"
+"the Vital Statistics Cooperative Program. Accessed at http://wonder.cdc.gov/mcd-icd10-provisional.html on Nov 16, 2023 11:37:15"
+"AM"
+"---"
+Caveats:
+"1. The population figures for years 2021 and later are single-race estimates of the July 1 resident population, based on the"
+"Blended Base produced by the US Census Bureau in lieu of the April 1, 2020 decennial population count, from the Vintage 2021"
+"postcensal series released by the Census Bureau on June 30, 2022. The population figures for year 2020 are single-race estimates"
+"of the July 1 resident population, from the Vintage 2020 postcensal series based on April 2010 Census, released by the Census"
+"Bureau on July 27, 2021. The population figures for year 2019 are single-race estimates of the July 1 resident population, from"
+"the Vintage 2019 postcensal series based on April 2010 Census, released by the Census Bureau on June 25, 2020. The population"
+"figures for year 2018 are single-race estimates of the July 1 resident population, from the Vintage 2018 postcensal series based"
+"on April 2010 Census, released by the Census Bureau on June 20, 2019. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd-provisional.html#Population Data."
+"2. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd-provisional.html#Age"
+"Group."
+"3. Deaths occurring through October 28, 2023 as of November 05, 2023."
